@@ -91,4 +91,24 @@ public class AuctionsController : ControllerBase
 
         return Ok();
     }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteAuction(Guid id)
+    {
+        var auction = await _context.Auctions.FindAsync(id);
+
+        if (auction == null)
+            return NotFound();
+
+        // Todo: Check seller == username
+
+        _context.Auctions.Remove(auction);
+
+        var result = await _context.SaveChangesAsync() > 0;
+
+        if (!result)
+            return BadRequest("Problem saving changes");
+
+        return Ok();
+    }
 }
