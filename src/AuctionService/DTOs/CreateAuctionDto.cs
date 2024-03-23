@@ -17,7 +17,7 @@ public class CreateAuctionDto
     public string Color { get; set; }
 
     [Required]
-    public int Milage { get; set; }
+    public int Mileage { get; set; }
 
     [Required]
     public string ImageUrl { get; set; }
